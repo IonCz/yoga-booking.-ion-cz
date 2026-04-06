@@ -1,2 +1,4 @@
+{"name":"Ion.czy","email":"ff@fff","passwordHash":"$2b$10$.2XNm.DAuvu2EV4N7ZBtX.hkcfrExznHNRb0goOxWOkPOSWCog8Na","role":"student","_id":"5o2RqbbqsSzbRkUH"}
+{"name":"Travolta","email":"tr@tr","passwordHash":"$2b$10$Bsxde3KK3XkGUDHNKjsmOufw.hEVaaiYPZqp4B1kIupLgcaeFj6nq","role":"student","_id":"Y032wOQHAf1OSWhR"}
+{"name":"Fred Smith","email":"gg@gg","passwordHash":"$2b$10$f6IQrqtewi4vO1zCjHEvW.0.Gyng6Ec1AQuqYSGoxPJS0IcS5WAEO","role":"instructor","_id":"im1nUlSfkXER2MHI"}
 {"$$indexCreated":{"fieldName":"email","unique":true,"sparse":false}}
-{"$$indexCreated":{"fieldName":"email","unique":true}}

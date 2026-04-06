@@ -1,0 +1,7 @@
+{"userId":"5o2RqbbqsSzbRkUH","courseId":"kjnd42IZEaAvP4vt","type":"COURSE","sessionIds":[],"status":"CANCELLED","createdAt":"2026-04-06T18:59:44.719Z","_id":"6htZur7vCV1lj9Zr"}
+{"userId":"5o2RqbbqsSzbRkUH","courseId":"kjnd42IZEaAvP4vt","type":"COURSE","sessionIds":[],"status":"CANCELLED","createdAt":"2026-04-06T20:00:09.449Z","_id":"LXzsQ4w3AxIDzs9S"}
+{"userId":"5o2RqbbqsSzbRkUH","courseId":"kjnd42IZEaAvP4vt","type":"SESSION","sessionIds":["5jr69QAWEvkY9Dot"],"status":"CANCELLED","createdAt":"2026-04-06T19:58:39.473Z","_id":"Qedowz4uzyzCyViB"}
+{"userId":"5o2RqbbqsSzbRkUH","courseId":"kjnd42IZEaAvP4vt","type":"SESSION","sessionIds":["5jr69QAWEvkY9Dot"],"status":"CANCELLED","createdAt":"2026-04-06T19:59:10.873Z","_id":"SCQ2HnlFIXkMSss0"}
+{"userId":"stxrHQnv5dMbNkvn","courseId":"KrqhmnV6RUvWP4MT","type":"COURSE","sessionIds":[],"status":"CONFIRMED","createdAt":"2026-04-06T17:04:25.893Z","_id":"lgJDKcZtO2aSwh3H"}
+{"userId":"5o2RqbbqsSzbRkUH","courseId":"b2uQ1K0UHM8iQjJA","type":"COURSE","sessionIds":[],"status":"CONFIRMED","createdAt":"2026-04-06T19:48:01.415Z","_id":"uBZqLwVrTxkpezOS"}
+{"userId":"5o2RqbbqsSzbRkUH","courseId":"kjnd42IZEaAvP4vt","type":"SESSION","sessionIds":["5jr69QAWEvkY9Dot"],"status":"CANCELLED","createdAt":"2026-04-06T19:59:52.664Z","_id":"vIBQkBAq3qrRY5Fu"}
