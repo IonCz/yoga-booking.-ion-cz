@@ -1,0 +1,57 @@
+{{> head}}
+{{> header}}
+
+<main class="container py-4">
+
+  <!-- TITLE -->
+  <section class="mb-4">
+    <h1 class="page-title mb-2">Course Participants</h1>
+    <p class="muted mb-0">
+      <strong>Course:</strong> {{course.title}}
+    </p>
+  </section>
+
+  <!-- BACK BUTTON -->
+  <div class="mb-4">
+    <a class="btn custom-btn-secondary" href="/admin/courses">
+      ← Back to Courses
+    </a>
+  </div>
+
+  <!-- TABLE -->
+  {{#hasParticipants}}
+  <section class="card section-card p-3">
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#participants}}
+          <tr>
+            <td><strong>{{name}}</strong></td>
+            <td class="muted">{{email}}</td>
+          </tr>
+          {{/participants}}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {{/hasParticipants}}
+
+  <!-- EMPTY STATE -->
+  {{^hasParticipants}}
+  <section class="card section-card text-center p-4">
+    <h3 class="mb-2">No participants yet</h3>
+    <p class="muted mb-0">
+      Students will appear here once they enrol in this course.
+    </p>
+  </section>
+  {{/hasParticipants}}
+
+</main>
+
+{{> footer}}

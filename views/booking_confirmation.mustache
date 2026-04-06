@@ -1,17 +1,54 @@
-
 {{> head}}
 {{> header}}
 
-<h1>Booking Confirmation</h1>
-<p>Your booking has been created.</p>
+<main class="container py-4">
 
-<dl class="kv">
-  <dt>ID</dt><dd>{{booking.id}}</dd>
-  <dt>Type</dt><dd>{{booking.type}}</dd>
-  <dt>Status</dt><dd>{{booking.status}}</dd>
-  <dt>Created</dt><dd>{{booking.createdAt}}</dd>
-</dl>
+  <!-- TITLE -->
+  <section class="text-center mb-4">
+    <h1 class="page-title mb-2">Booking Confirmed</h1>
+    <p class="muted">
+      Your booking has been successfully created.
+    </p>
+  </section>
 
-<p><a class="btn" href></p>
+  <!-- DETAILS -->
+  <section class="card section-card p-4 mb-4">
 
-{{>
+    <h3 class="mb-3">Booking Details</h3>
+
+    <div class="row g-3">
+
+      <div class="col-12 col-md-6">
+        <p class="mb-1"><strong>ID</strong></p>
+        <p class="muted mb-0">{{booking.id}}</p>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <p class="mb-1"><strong>Type</strong></p>
+        <p class="muted mb-0">{{booking.type}}</p>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <p class="mb-1"><strong>Status</strong></p>
+        <p class="muted mb-0">{{booking.status}}</p>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <p class="mb-1"><strong>Created</strong></p>
+        <p class="muted mb-0">{{booking.createdAt}}</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ACTION -->
+  <div class="text-center">
+    <a class="btn custom-btn-primary" href="/courses">
+      Back to Courses
+    </a>
+  </div>
+
+</main>
+
+{{> footer}}

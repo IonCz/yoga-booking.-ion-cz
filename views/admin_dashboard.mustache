@@ -1,0 +1,81 @@
+{{> head}}
+{{> header}}
+
+<main class="container py-4">
+
+  <!-- TITLE -->
+  <section class="mb-4 text-center text-md-start">
+    <h1 class="page-title mb-2">Instructor Dashboard</h1>
+    <p class="muted mb-0">
+      Manage courses, sessions, and participants.
+    </p>
+  </section>
+
+  <!-- DASHBOARD CARDS -->
+  <div class="row g-4">
+
+    <!-- ADD COURSE -->
+    <div class="col-12 col-md-6 col-xl-3">
+      <article class="card section-card h-100 p-4 d-flex flex-column">
+        <h2 class="h5 mb-3">Add Course</h2>
+        <p class="muted mb-4">
+          Create a new yoga course or workshop.
+        </p>
+        <div class="mt-auto">
+          <a class="btn custom-btn-primary w-100" href="/admin/courses/new">
+            Add Course
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <!-- ADD SESSION -->
+    <div class="col-12 col-md-6 col-xl-3">
+      <article class="card section-card h-100 p-4 d-flex flex-column">
+        <h2 class="h5 mb-3">Add Session</h2>
+        <p class="muted mb-4">
+          Create a new session for an existing course.
+        </p>
+        <div class="mt-auto">
+          <a class="btn custom-btn-primary w-100" href="/admin/sessions/new">
+            Add Session
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <!-- MANAGE COURSES -->
+    <div class="col-12 col-md-6 col-xl-3">
+      <article class="card section-card h-100 p-4 d-flex flex-column">
+        <h2 class="h5 mb-3">Manage Courses</h2>
+        <p class="muted mb-4">
+          View, edit, or remove existing courses.
+        </p>
+        <div class="mt-auto">
+          <a class="btn custom-btn-primary w-100" href="/admin/courses">
+            Manage Courses
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <!-- MANAGE USERS -->
+    <div class="col-12 col-md-6 col-xl-3">
+      <article class="card section-card h-100 p-4 d-flex flex-column">
+        <h2 class="h5 mb-3">Manage Users</h2>
+        <p class="muted mb-4">
+          Create, view and edit existing users.
+        </p>
+        <div class="mt-auto">
+          <a class="btn custom-btn-secondary w-100" href="/admin/users">
+            Manage Users
+          </a>
+        </div>
+      </article>
+    </div>
+
+  </div>
+
+</main>
+
+{{> footer}}

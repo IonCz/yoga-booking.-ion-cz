@@ -1,0 +1,98 @@
+{{> head}}
+{{> header}}
+
+<main class="container py-4">
+
+  <!-- TITLE -->
+  <section class="mb-4">
+    <h1 class="page-title mb-2">My Bookings</h1>
+    <p class="muted mb-0">
+      View your course and session bookings here.
+    </p>
+  </section>
+
+  <!-- SUCCESS MESSAGE -->
+  {{#successMessage}}
+  <div class="message-success mb-4">
+    <strong>{{successMessage}}</strong>
+  </div>
+  {{/successMessage}}
+
+  <!-- TABLE -->
+  <section class="card section-card p-3">
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Course</th>
+            <th>Type</th>
+            <th>Details</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {{#bookings}}
+          <tr>
+            <td><strong>{{courseTitle}}</strong></td>
+
+            <td>{{type}}</td>
+
+            <td>
+              {{#isCourse}}
+              <span class="muted">
+                Full course booking<br />
+                Includes all sessions for this course
+              </span>
+              {{/isCourse}}
+
+              {{#isSession}}
+              <span class="muted">
+                Start: {{sessionStart}}<br />
+                End: {{sessionEnd}}
+              </span>
+              {{/isSession}}
+            </td>
+
+            <td>{{status}}</td>
+
+            <td>{{createdAt}}</td>
+
+            <td>
+              {{#canCancel}}
+              <form
+                method="POST"
+                action="/my/bookings/{{id}}/cancel"
+                onsubmit="return confirm('{{cancelMessage}}');"
+              >
+                <button type="submit" class="btn custom-btn-danger btn-sm">
+                  Cancel
+                </button>
+              </form>
+              {{/canCancel}}
+
+              {{^canCancel}}
+              <span class="muted">Cancelled</span>
+              {{/canCancel}}
+            </td>
+          </tr>
+          {{/bookings}}
+
+          {{^bookings}}
+          <tr>
+            <td colspan="6" class="text-center muted">
+              You have no bookings yet.
+            </td>
+          </tr>
+          {{/bookings}}
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+{{> footer}}

@@ -1,18 +1,23 @@
-
 {{> head}}
 {{> header}}
 
-<article>
-  <h1>Book: {{course.title}}</h1>
-  <p class="muted">
-    Level: {{course.level}} • Type: {{course.type}} {{#course.allowDropIn}}• Drop-in available{{/course.allowDropIn}}
-  </p>
-  <p>{{course.description}}</p>
-  <p class="muted">Dates: {{course.startDate}} – {{course.endDate}}</p>
+<main class="container py-4">
 
+  <!-- TITLE -->
+  <section class="mb-4">
+    <h1 class="page-title mb-2">Book: {{course.title}}</h1>
+    <p class="muted mb-2">
+      Level: {{course.level}} • Type: {{course.type}}
+      {{#course.allowDropIn}} • Drop-in available{{/course.allowDropIn}}
+    </p>
+    <p class="mb-2">{{course.description}}</p>
+    <p class="muted mb-0">Dates: {{course.startDate}} – {{course.endDate}}</p>
+  </section>
+
+  <!-- ERRORS -->
   {{#errors}}
-  <div class="alert error" role="alert" aria-live="assertive">
-    <ul>
+  <div class="message-error mb-4" role="alert" aria-live="assertive">
+    <ul class="mb-0">
       {{#list}}
       <li>{{.}}</li>
       {{/list}}
@@ -20,48 +25,94 @@
   </div>
   {{/errors}}
 
-  <form method="post" action="/   <!-- If you add CSRF later: <input type="hidden" name="_csrf" value="{{csrfToken}}"> -->
-    <input type="hidden" name="userId" value="{{user._id}}">
+  <!-- FORM -->
+  <section class="card section-card p-4">
+    <form method="POST" action="/courses/{{course.id}}/book" class="row g-4">
+      <!-- If you add CSRF later: <input type="hidden" name="_csrf" value="{{csrfToken}}"> -->
+      <input type="hidden" name="userId" value="{{user._id}}">
 
-    <fieldset>
-      <legend>Your details</legend>
-
-      <div class="field">
-        <label for="name">Full name</label>
-        <input id="name" name="name" type="text" required value="{{user.name}}">
+      <!-- YOUR DETAILS -->
+      <div class="col-12">
+        <h2 class="h5 mb-3">Your Details</h2>
       </div>
 
-      <div class="field">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required value="{{user.email}}">
+      <div class="col-12 col-md-6">
+        <label for="name" class="form-label">Full Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          class="form-control"
+          required
+          value="{{user.name}}"
+        />
       </div>
 
-      <div class="field">
-        <label for="notes">Notes (injuries, preferences)</label>
-        <textarea id="notes" name="notes" rows="4" placeholder="Optional">{{notes}}</textarea>
+      <div class="col-12 col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          class="form-control"
+          required
+          value="{{user.email}}"
+        />
       </div>
 
-      <div class="field checkbox">
-        <input id="consent" name="consent" type="checkbox" required>
-        <label for="consent">I agree to the studio’s booking terms &amp; health disclaimer.</label>
+      <div class="col-12">
+        <label for="notes" class="form-label">Notes (injuries, preferences)</label>
+        <textarea
+          id="notes"
+          name="notes"
+          rows="4"
+          class="form-control"
+          placeholder="Optional"
+        >{{notes}}</textarea>
       </div>
-    </fieldset>
 
-    <fieldset>
-      <legend>Booking summary</legend>
-      <p>This booking reserves a seat across <strong>{{sessionsCount}}</strong> sessions:</p>
-      <ul class="muted">
-        {{#sessions}}
-        <li>{{start}} ({{remaining}} places left)</li>
-        {{/sessions}}
-      </ul>
-    </fieldset>
+      <div class="col-12">
+        <div class="form-check">
+          <input
+            id="consent"
+            name="consent"
+            type="checkbox"
+            class="form-check-input"
+            required
+          />
+          <label for="consent" class="form-check-label">
+            I agree to the studio’s booking terms &amp; health disclaimer.
+          </label>
+        </div>
+      </div>
 
-    <div class="actions">
-      <button class="btn primary" type="submit">Confirm Course Booking</button>
-      /courses/{{course.id}}Cancel</a>
-    </div>
-  </form>
-</article>
+      <!-- BOOKING SUMMARY -->
+      <div class="col-12 pt-2">
+        <h2 class="h5 mb-3">Booking Summary</h2>
+        <p class="mb-2">
+          This booking reserves a seat across <strong>{{sessionsCount}}</strong> sessions:
+        </p>
+
+        <ul class="muted mb-0">
+          {{#sessions}}
+          <li>{{start}} ({{remaining}} places left)</li>
+          {{/sessions}}
+        </ul>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="col-12 d-flex gap-2 flex-wrap pt-2">
+        <button class="btn custom-btn-primary" type="submit">
+          Confirm Course Booking
+        </button>
+
+        <a class="btn custom-btn-secondary" href="/courses/{{course.id}}">
+          Cancel
+        </a>
+      </div>
+    </form>
+  </section>
+
+</main>
 
 {{> footer}}

@@ -1,52 +1,137 @@
-
 {{> head}}
 {{> header}}
 
-<article>
-  <h1>{{course.title}}</h1>
-  <p class="muted">
-    Level: {{course.level}} • Type: {{course.type}} {{#course.allowDropIn}}• Drop-in available{{/course.allowDropIn}}
-  </p>
-  <p>{{course.description}}</p>
-  <p class="muted">Dates: {{course.startDate}} – {{course.endDate}}</p>
+<main class="container py-4">
 
-  <section>
-    <h2>Book the full course</h2>
-   <form action="/courses/{{course.id}}/book" method="post">  <!-- If you add CSRF later: <input type="hidden" name="_csrf" value="{{csrfToken}}"> -->
-      <input type="hidden" name="userId" value="{{user._id}}">
-      <button class="btn primary" type="submit">Book full course</button>
-    </form>
-  </section>
+  <!-- TITLE -->
+  <div class="mb-4">
+    <h1 class="page-title">{{course.title}}</h1>
 
-  <section>
-    <h2>Sessions</h2>
-    <table class="table">
-      <thead>
-        <tr><th>Start</th><th>End</th><th>Capacity</th><th>Booked</th><th>Remaining</th><th></th></tr>
-      </thead>
-      <tbody>
-        {{#sessions}}
-        <tr>
-          <td>{{start}}</td>
-          <td>{{end}}</td>
-          <td>{{capacity}}</td>
-          <td>{{booked}}</td>
-          <td>{{remaining}}</td>
-          <td>
-            {{#../course.allowDropIn}}
-            <form method="postook
-              <button class="btn" type="submit" {{#isFull}}disabled{{/isFull}}>Book this session</button>
-            </form>
-            {{/../course.allowDropIn}}
-            {{^../course.allowDropIn}}
-              <span class="muted">Drop-ins disabled</span>
-            {{/../course.allowDropIn}}
-          </td>
-        </tr>
-        {{/sessions}}
-      </tbody>
-    </table>
-  </section>
-</article>
+    <p class="muted">
+      Level: {{course.level}} • Type: {{course.type}}
+      {{#course.allowDropIn}} • Drop-in OK{{/course.allowDropIn}}
+    </p>
+
+    <p>{{course.description}}</p>
+
+    <p class="muted">
+      Dates: {{course.startDate}} – {{course.endDate}}
+    </p>
+
+    <p><strong>Price:</strong> £{{course.price}}</p>
+  </div>
+
+  <!-- ENROLMENT SECTION -->
+  {{#isStudent}}
+
+    {{^isEnrolled}}
+    <section class="card p-3 mb-4">
+      <h4>Enrol in this course</h4>
+      <p class="muted">
+        You must enrol before booking sessions.
+      </p>
+
+      <form method="POST" action="/courses/{{course.id}}/book"">
+        <button type="submit" class="btn custom-btn-primary">
+          Enrol in course
+        </button>
+      </form>
+    </section>
+    {{/isEnrolled}}
+
+    {{#isEnrolled}}
+    <section class="card p-3 mb-4">
+      <h4>You are enrolled</h4>
+      <p class="muted">
+        You can now book sessions below.
+      </p>
+    </section>
+    {{/isEnrolled}}
+
+  {{/isStudent}}
+
+  <!-- SESSIONS -->
+  <div class="card p-3">
+    <h3 class="mb-3">Sessions</h3>
+
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th>Start</th>
+            <th>End</th>
+            <th>Capacity</th>
+            <th>Location</th>
+            <th>Booked</th>
+            <th>Remaining</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#sessions}}
+          <tr>
+            <td>{{start}}</td>
+            <td>{{end}}</td>
+            <td>{{capacity}}</td>
+            <td>{{location}}</td>
+            <td>{{booked}}</td>
+            <td>{{remaining}}</td>
+
+            <td>
+
+              {{#isStudent}}
+
+                {{#canBook}}
+                <form method="POST" action="/sessions/{{id}}/book">
+                  <button type="submit" class="btn custom-btn-primary btn-sm">
+                    Book
+                  </button>
+                </form>
+                {{/canBook}}
+
+                {{#alreadyBooked}}
+                <span class="muted">Already booked</span>
+                {{/alreadyBooked}}
+
+                {{^isEnrolled}}
+                <span class="muted">Enrol first</span>
+                {{/isEnrolled}}
+
+              {{/isStudent}}
+
+              {{#isInstructor}}
+              <div class="d-flex flex-wrap gap-2">
+
+                <a class="btn custom-btn-secondary btn-sm"
+                   href="/admin/sessions/{{id}}/edit">
+                  Edit
+                </a>
+
+                <a class="btn custom-btn-primary btn-sm"
+                   href="/admin/sessions/{{id}}/participants">
+                  Participants
+                </a>
+
+                <form method="POST"
+                      action="/admin/sessions/{{id}}/delete"
+                      onsubmit="return confirm('Delete this session?');">
+                  <button type="submit" class="btn custom-btn-danger btn-sm">
+                    Delete
+                  </button>
+                </form>
+
+              </div>
+              {{/isInstructor}}
+
+            </td>
+          </tr>
+          {{/sessions}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
 
 {{> footer}}

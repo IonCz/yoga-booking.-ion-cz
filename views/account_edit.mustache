@@ -1,0 +1,95 @@
+{{> head}}
+{{> header}}
+
+<main class="container py-4">
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8 col-xl-7">
+
+      <section class="text-center mb-4">
+        <h1 class="page-title mb-2">My Account</h1>
+        <p class="muted mb-0">
+          Update your personal details and password.
+        </p>
+      </section>
+
+      {{#error}}
+      <div class="message-error mb-3">
+        {{error}}
+      </div>
+      {{/error}}
+
+      {{#updated}}
+      <div class="message-success mb-3">
+        Account updated successfully.
+      </div>
+      {{/updated}}
+
+      <section class="card section-card p-4">
+        <form method="POST" action="/account" class="row g-3">
+
+          <div class="col-12 col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              class="form-control"
+              value="{{userData.name}}"
+              required
+            />
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              class="form-control"
+              value="{{userData.email}}"
+              required
+            />
+          </div>
+
+          <div class="col-12">
+            <label for="password" class="form-label">
+              New Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              class="form-control"
+              placeholder="Leave blank to keep your current password"
+            />
+            <small class="muted">
+              Only enter a new password if you want to change it.
+            </small>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label class="form-label">Role</label>
+            <input
+              type="text"
+              class="form-control"
+              value="{{userData.role}}"
+              disabled
+            />
+          </div>
+
+          <div class="col-12 pt-2">
+            <button type="submit" class="btn custom-btn-primary w-100 w-md-auto">
+              Save Changes
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+    </div>
+  </div>
+
+</main>
+
+{{> footer}}

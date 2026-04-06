@@ -1,0 +1,78 @@
+{{> head}}
+{{> header}}
+
+<main class="container py-4">
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-5">
+
+      <section class="text-center mb-4">
+        <h1 class="page-title mb-2">Register</h1>
+        <p class="muted mb-0">
+          Create your account to start booking courses and sessions.
+        </p>
+      </section>
+
+      {{#error}}
+      <div class="message-error mb-3">
+        {{error}}
+      </div>
+      {{/error}}
+
+      <section class="card section-card p-4">
+        <form method="POST" action="/register" class="row g-3">
+
+          <div class="col-12">
+            <label for="name" class="form-label">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="col-12">
+            <label for="email" class="form-label">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="col-12">
+            <label for="password" class="form-label">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn custom-btn-primary w-100">
+              Register
+            </button>
+          </div>
+
+        </form>
+
+        <div class="text-center mt-3">
+          <span class="muted">Already have an account?</span>
+          <a href="/login" class="ms-1">Login here</a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</main>
+
+{{> footer}}
+

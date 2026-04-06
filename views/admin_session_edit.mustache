@@ -1,0 +1,97 @@
+{{> head}}
+{{> header}}
+
+<main class="container py-4">
+
+  <!-- TITLE -->
+  <section class="mb-4">
+    <h1 class="page-title mb-2">Edit Session</h1>
+    <p class="muted mb-0">
+      Update the details of this class session.
+    </p>
+  </section>
+
+  <!-- FORM -->
+  <section class="card section-card p-4">
+    <form method="POST" action="/admin/sessions/{{session.id}}/edit" class="row g-3">
+
+      <!-- START -->
+      <div class="col-12 col-md-6">
+        <label for="startDateTime" class="form-label">Start Date & Time</label>
+        <input
+          id="startDateTime"
+          name="startDateTime"
+          type="datetime-local"
+          class="form-control"
+          value="{{session.startDateTime}}"
+          required
+        />
+      </div>
+
+      <!-- END -->
+      <div class="col-12 col-md-6">
+        <label for="endDateTime" class="form-label">End Date & Time</label>
+        <input
+          id="endDateTime"
+          name="endDateTime"
+          type="datetime-local"
+          class="form-control"
+          value="{{session.endDateTime}}"
+          required
+        />
+      </div>
+
+      <!-- CAPACITY -->
+      <div class="col-12 col-md-6">
+        <label for="capacity" class="form-label">Capacity</label>
+        <input
+          id="capacity"
+          name="capacity"
+          type="number"
+          min="{{session.bookedCount}}"
+          class="form-control"
+          value="{{session.capacity}}"
+          required
+        />
+        <small class="muted">
+          Cannot be lower than current bookings.
+        </small>
+      </div>
+
+      <!-- LOCATION -->
+      <div class="col-12 col-md-6">
+        <label for="location" class="form-label">Location</label>
+        <input
+          id="location"
+          name="location"
+          type="text"
+          class="form-control"
+          value="{{session.location}}"
+          required
+        />
+      </div>
+
+      <!-- INFO -->
+      <div class="col-12">
+        <div class="message-success">
+          Already booked: <strong>{{session.bookedCount}}</strong>
+        </div>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="col-12 d-flex gap-2 flex-wrap">
+        <button type="submit" class="btn custom-btn-primary">
+          Save Changes
+        </button>
+
+        <a href="/courses/{{session.courseId}}" class="btn custom-btn-secondary">
+          Cancel
+        </a>
+      </div>
+
+    </form>
+  </section>
+
+</main>
+
+{{> footer}}

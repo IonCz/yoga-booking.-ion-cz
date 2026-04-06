@@ -1,13 +1,69 @@
-<header class="site-header">
-  <div class="wrap">
-    🧘 Yoga Studio
-    <nav>
-      <a> hrefs</a>
-    </nav>
-    {{#user}}
-    <div class="user">
-      Signed in as <strong>{{ name }}</strong>
+<header>
+  <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
+  <span class="brand-meditation" aria-hidden="true">
+  <span class="meditation-emoji">🧘</span>
+  <span class="thought-cloud"></span>
+  <span class="mini-rainbow"></span>
+  <span class="sparkle sparkle-1">✦</span>
+  <span class="sparkle sparkle-2">✧</span>
+  <span class="sparkle sparkle-3">✦</span>
+</span>
+</a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/courses">Courses</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/info">Info</a>
+          </li>
+
+          {{#isStudent}}
+          <li class="nav-item">
+            <a class="nav-link" href="/my/courses">My Courses</a>
+          </li>
+          {{/isStudent}}
+
+          {{#isInstructor}}
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">Admin Dashboard</a>
+          </li>
+          {{/isInstructor}}
+        </ul>
+
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          {{#user}}
+            <span class="nav-user-text">Signed in as <strong>{{name}}</strong></span>
+            <a class="btn btn-sm custom-btn-secondary" href="/account">My Account</a>
+            <a class="btn btn-sm custom-btn-danger" href="/logout">Logout</a>
+          {{/user}}
+
+          {{^user}}
+            <a class="btn btn-sm custom-btn-secondary" href="/login">Login</a>
+            <a class="btn btn-sm custom-btn-primary" href="/register">Register</a>
+          {{/user}}
+        </div>
+      </div>
     </div>
-    {{/user}}
-  </div>
+  </nav>
 </header>

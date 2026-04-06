@@ -56,6 +56,7 @@ async function createWeekendWorkshop() {
     endDate: "2026-01-11",
     instructorId: instructor._id,
     sessionIds: [],
+    price: 75,
     description: "Two days of breath, posture alignment, and meditation.",
   });
 
@@ -70,6 +71,7 @@ async function createWeekendWorkshop() {
       endDateTime: iso(end),
       capacity: 20,
       bookedCount: 0,
+      location: i < 3 ? "Mindfulness Room A" : "Studio B",
     });
     sessions.push(s);
   }
@@ -84,6 +86,7 @@ async function createWeeklyBlock() {
     name: "Ben",
     email: "ben@yoga.local",
     role: "instructor",
+
   });
   const course = await CourseModel.create({
     title: "12‑Week Vinyasa Flow",
@@ -94,6 +97,7 @@ async function createWeeklyBlock() {
     endDate: "2026-04-20",
     instructorId: instructor._id,
     sessionIds: [],
+    price: 120,
     description: "Progressive sequences building strength and flexibility.",
   });
 
@@ -108,6 +112,7 @@ async function createWeeklyBlock() {
       endDateTime: iso(end),
       capacity: 18,
       bookedCount: 0,
+      location: i % 2 === 0 ? "Main Yoga Hall" : "Upstairs Studio",
     });
     sessions.push(s);
   }

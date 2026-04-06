@@ -2,49 +2,51 @@ import request from "supertest";
 import { app } from "../index.js";
 import { resetDb, seedMinimal } from "./helpers.js";
 
-describe("SSR view routes", () => {
+describe("Public SSR pages", () => {
   let data;
 
-  beforeAll(async () => {
-    process.env.NODE_ENV = "test";
+  beforeEach(async () => {
     await resetDb();
     data = await seedMinimal();
   });
 
-  test("GET / (home) renders HTML", async () => {
+  test("GET / renders home page", async () => {
     const res = await request(app).get("/");
+
     expect(res.status).toBe(200);
     expect(res.headers["content-type"]).toMatch(/html/);
-    // Page title from home.mustache (adjust if you changed it)
-    expect(res.text).toMatch(/Courses|Upcoming Courses/i);
+    expect(res.text).toMatch(/Yoga|Courses|Mindfulness/i);
   });
 
-  test("GET /courses (list page) renders HTML and shows Test Course", async () => {
+  test("GET /courses renders courses page and shows seeded course", async () => {
     const res = await request(app).get("/courses");
+
     expect(res.status).toBe(200);
     expect(res.headers["content-type"]).toMatch(/html/);
     expect(res.text).toMatch(/Test Course/);
   });
 
-  test("GET /courses/:id (detail page) renders HTML", async () => {
+  test("GET /courses/:id renders course detail page", async () => {
     const res = await request(app).get(`/courses/${data.course._id}`);
+
     expect(res.status).toBe(200);
     expect(res.headers["content-type"]).toMatch(/html/);
     expect(res.text).toMatch(/Test Course/);
   });
 
-  test("GET /courses/:id/book renders course booking form", async () => {
-    const res = await request(app).get(`/courses/${data.course._id}/book`);
+  test("GET /login renders login page", async () => {
+    const res = await request(app).get("/login");
+
     expect(res.status).toBe(200);
     expect(res.headers["content-type"]).toMatch(/html/);
-    expect(res.text).toMatch(/Confirm Course Booking|Book:/i);
+    expect(res.text).toMatch(/login/i);
   });
 
-  test("GET /sessions/:id/book renders session booking form", async () => {
-    const sessionId = data.sessions[0]._id;
-    const res = await request(app).get(`/sessions/${sessionId}/book`);
+  test("GET /register renders register page", async () => {
+    const res = await request(app).get("/register");
+
     expect(res.status).toBe(200);
     expect(res.headers["content-type"]).toMatch(/html/);
-    expect(res.text).toMatch(/Confirm Session Booking|Book Session/i);
+    expect(res.text).toMatch(/register/i);
   });
 });

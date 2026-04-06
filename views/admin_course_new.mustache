@@ -1,0 +1,123 @@
+{{> head}}
+{{> header}}
+
+<main class="container py-4">
+
+  <!-- TITLE -->
+  <section class="mb-4">
+    <h1 class="page-title mb-2">Add Course</h1>
+    <p class="muted mb-0">Create a new yoga course or workshop.</p>
+  </section>
+
+  <!-- FORM -->
+  <section class="card section-card p-4">
+    <form method="POST" action="/admin/courses/new" class="row g-3">
+
+      <!-- TITLE -->
+      <div class="col-12">
+        <label for="title" class="form-label">Course Title</label>
+        <input
+          id="title"
+          name="title"
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <!-- LEVEL -->
+      <div class="col-12 col-md-6">
+        <label for="level" class="form-label">Level</label>
+        <select id="level" name="level" class="form-select" required>
+          <option value="">Choose level</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+      </div>
+
+      <!-- TYPE -->
+      <div class="col-12 col-md-6">
+        <label for="type" class="form-label">Course Type</label>
+        <select id="type" name="type" class="form-select" required>
+          <option value="">Choose type</option>
+          <option value="WEEKEND_WORKSHOP">Weekend workshop</option>
+          <option value="WEEKLY_BLOCK">Weekly block</option>
+        </select>
+      </div>
+
+      <!-- DROP IN -->
+      <div class="col-12 col-md-6">
+        <label for="allowDropIn" class="form-label">Allow Drop-in</label>
+        <select id="allowDropIn" name="allowDropIn" class="form-select" required>
+          <option value="false">No</option>
+          <option value="true">Yes</option>
+        </select>
+      </div>
+
+      <!-- PRICE -->
+      <div class="col-12 col-md-6">
+        <label for="price" class="form-label">Price (£)</label>
+        <input
+          id="price"
+          name="price"
+          type="number"
+          min="0"
+          step="0.01"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <!-- DATES -->
+      <div class="col-12 col-md-6">
+        <label for="startDate" class="form-label">Start Date</label>
+        <input
+          id="startDate"
+          name="startDate"
+          type="date"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="col-12 col-md-6">
+        <label for="endDate" class="form-label">End Date</label>
+        <input
+          id="endDate"
+          name="endDate"
+          type="date"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <!-- DESCRIPTION -->
+      <div class="col-12">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          rows="5"
+          class="form-control"
+          required
+        ></textarea>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="col-12 d-flex gap-2 flex-wrap">
+        <button type="submit" class="btn custom-btn-primary">
+          Save Course
+        </button>
+
+        <a href="/admin" class="btn custom-btn-secondary">
+          Cancel
+        </a>
+      </div>
+
+    </form>
+  </section>
+
+</main>
+
+{{> footer}}

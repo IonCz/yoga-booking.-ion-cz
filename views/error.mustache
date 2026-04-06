@@ -1,9 +1,17 @@
-
 {{> head}}
 {{> header}}
 
-<h1>{{title}}</h1>
-<p>{{message}}</p>
-<p>/Back</a></p>
+<main class="container py-4">
+
+  <section class="text-center">
+    <h1 class="page-title mb-3">{{title}}</h1>
+    <p class="muted mb-4">{{message}}</p>
+
+    <a class="btn custom-btn-primary" href="/courses">
+      Back to Courses
+    </a>
+  </section>
+
+</main>
 
 {{> footer}}

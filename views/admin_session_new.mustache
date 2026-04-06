@@ -1,0 +1,94 @@
+{{> head}}
+{{> header}}
+
+<main class="container py-4">
+
+  <!-- TITLE -->
+  <section class="mb-4">
+    <h1 class="page-title mb-2">Add Session</h1>
+    <p class="muted mb-0">
+      Create a new class session for an existing course.
+    </p>
+  </section>
+
+  <!-- FORM -->
+  <section class="card section-card p-4">
+    <form method="POST" action="/admin/sessions/new" class="row g-3">
+
+      <!-- COURSE -->
+      <div class="col-12">
+        <label for="courseId" class="form-label">Course</label>
+        <select id="courseId" name="courseId" class="form-select" required>
+          <option value="">Choose course</option>
+          {{#courses}}
+          <option value="{{id}}">{{title}}</option>
+          {{/courses}}
+        </select>
+      </div>
+
+      <!-- START -->
+      <div class="col-12 col-md-6">
+        <label for="startDateTime" class="form-label">Start Date & Time</label>
+        <input
+          id="startDateTime"
+          name="startDateTime"
+          type="datetime-local"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <!-- END -->
+      <div class="col-12 col-md-6">
+        <label for="endDateTime" class="form-label">End Date & Time</label>
+        <input
+          id="endDateTime"
+          name="endDateTime"
+          type="datetime-local"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <!-- CAPACITY -->
+      <div class="col-12 col-md-6">
+        <label for="capacity" class="form-label">Capacity</label>
+        <input
+          id="capacity"
+          name="capacity"
+          type="number"
+          min="1"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <!-- LOCATION -->
+      <div class="col-12 col-md-6">
+        <label for="location" class="form-label">Location</label>
+        <input
+          id="location"
+          name="location"
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="col-12 d-flex gap-2 flex-wrap">
+        <button type="submit" class="btn custom-btn-primary">
+          Save Session
+        </button>
+
+        <a href="/admin" class="btn custom-btn-secondary">
+          Cancel
+        </a>
+      </div>
+
+    </form>
+  </section>
+
+</main>
+
+{{> footer}}

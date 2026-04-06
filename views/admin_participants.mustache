@@ -1,0 +1,64 @@
+{{> head}}
+{{> header}}
+
+<main class="container py-4">
+
+  <!-- TITLE -->
+  <section class="mb-4">
+    <h1 class="page-title mb-2">Participants</h1>
+    <p class="muted mb-0">
+      Course: <strong>{{course.title}}</strong>
+    </p>
+  </section>
+
+  <!-- BACK BUTTON -->
+  <div class="mb-4">
+    <a class="btn custom-btn-secondary" href="/admin/courses">
+      ← Back to Manage Courses
+    </a>
+  </div>
+
+  <!-- TABLE -->
+  <section class="card section-card p-3">
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Enrolment Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {{#participants}}
+          <tr>
+            <td><strong>{{participantName}}</strong></td>
+            <td class="muted">{{participantEmail}}</td>
+            <td>{{enrolmentStatus}}</td>
+            <td>
+              <a class="btn custom-btn-primary btn-sm"
+                 href="/admin/courses/{{course.id}}/participants/{{userId}}">
+                View Session Activity
+              </a>
+            </td>
+          </tr>
+          {{/participants}}
+
+          {{^participants}}
+          <tr>
+            <td colspan="4" class="text-center muted">
+              No participants found for this course.
+            </td>
+          </tr>
+          {{/participants}}
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+{{> footer}}

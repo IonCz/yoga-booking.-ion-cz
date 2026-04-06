@@ -1,0 +1,84 @@
+{{> head}}
+{{> header}}
+
+<main class="container py-4">
+
+  <!-- TITLE -->
+  <section class="mb-4">
+    <h1 class="page-title mb-2">Manage Users</h1>
+    <p class="muted mb-0">
+      View, edit and manage all registered users.
+    </p>
+  </section>
+
+  <!-- SUCCESS MESSAGE -->
+  {{#successMessage}}
+  <div class="message-success mb-4">
+    {{successMessage}}
+  </div>
+  {{/successMessage}}
+
+  <!-- CREATE BUTTON -->
+  <div class="mb-4">
+    <a class="btn custom-btn-primary" href="/admin/users/new">
+      + Create User
+    </a>
+  </div>
+
+  <!-- TABLE -->
+  <section class="card section-card p-3">
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {{#users}}
+          <tr>
+            <td><strong>{{name}}</strong></td>
+            <td class="muted">{{email}}</td>
+            <td>{{role}}</td>
+
+            <td>
+              <div class="d-flex flex-wrap gap-2">
+
+                <a class="btn custom-btn-secondary btn-sm"
+                   href="/admin/users/{{id}}/edit">
+                  Edit
+                </a>
+
+                <form method="POST"
+                      action="/admin/users/{{id}}/delete">
+                  <button type="submit" class="btn custom-btn-danger btn-sm">
+                    Delete
+                  </button>
+                </form>
+
+                {{#isStudent}}
+                <form method="POST"
+                      action="/admin/users/{{id}}/promote">
+                  <button type="submit" class="btn custom-btn-primary btn-sm">
+                    Make Instructor
+                  </button>
+                </form>
+                {{/isStudent}}
+
+              </div>
+            </td>
+          </tr>
+          {{/users}}
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+{{> footer}}

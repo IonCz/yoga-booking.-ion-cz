@@ -1,0 +1,80 @@
+{{> head}}
+{{> header}}
+
+<main class="container py-4">
+
+  <!-- TITLE -->
+  <section class="mb-4">
+    <h1 class="page-title mb-2">My Courses</h1>
+    <p class="muted mb-0">
+      These are the courses you are currently enrolled in.
+    </p>
+  </section>
+
+  <!-- SUCCESS MESSAGE -->
+  {{#successMessage}}
+  <div class="message-success mb-4">
+    <strong>{{successMessage}}</strong>
+  </div>
+  {{/successMessage}}
+
+  <!-- COURSES -->
+  <div class="row g-4">
+
+    {{#courses}}
+    <div class="col-12 col-md-6 col-lg-4">
+      <article class="card section-card h-100 p-3 d-flex flex-column">
+
+        <h2 class="h5 mb-2">{{title}}</h2>
+
+        <p class="muted mb-1">
+          {{level}} • {{type}}
+        </p>
+
+        <p class="muted mb-2">
+          {{startDate}} – {{endDate}}
+        </p>
+
+        <p class="mb-3">
+          {{description}}
+        </p>
+
+        <div class="mt-auto d-flex flex-column gap-2">
+
+          <a class="btn custom-btn-secondary btn-sm"
+             href="/my/courses/{{courseId}}/bookings">
+            View Session Bookings
+          </a>
+
+          <form
+            method="POST"
+            action="/my/courses/{{courseId}}/cancel"
+            onsubmit="return confirm('{{cancelMessage}}');"
+          >
+            <button type="submit" class="btn custom-btn-danger btn-sm w-100">
+              Cancel Enrolment
+            </button>
+          </form>
+
+        </div>
+
+      </article>
+    </div>
+    {{/courses}}
+
+    {{^courses}}
+    <div class="col-12">
+      <div class="text-center p-4">
+        <h3 class="h5 mb-2">No courses yet</h3>
+        <p class="muted mb-0">
+          You are not enrolled in any courses yet.
+        </p>
+      </div>
+    </div>
+    {{/courses}}
+
+  </div>
+
+</main>
+
+{{> footer}}

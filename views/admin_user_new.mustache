@@ -1,0 +1,74 @@
+{{> head}}
+{{> header}}
+
+<main class="container py-4">
+
+  <section class="mb-4">
+    <h1 class="page-title mb-2">Create User</h1>
+    <p class="muted mb-0">
+      Add a new user account to the system.
+    </p>
+  </section>
+
+  {{#error}}
+  <div class="message-error mb-4">
+    {{error}}
+  </div>
+  {{/error}}
+
+  <section class="card section-card p-4">
+    <form method="POST" action="/admin/users/new" class="row g-3">
+
+      <div class="col-12 col-md-6">
+        <label for="name" class="form-label">Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="col-12 col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="col-12 col-md-6">
+        <label for="password" class="form-label">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="col-12 col-md-6">
+        <label for="role" class="form-label">Role</label>
+        <select id="role" name="role" class="form-select">
+          <option value="student">Student</option>
+          <option value="instructor">Instructor</option>
+        </select>
+      </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn custom-btn-primary">
+          Create User
+        </button>
+      </div>
+
+    </form>
+  </section>
+
+</main>
+
+{{> footer}}
