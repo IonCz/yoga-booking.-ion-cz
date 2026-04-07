@@ -167,7 +167,7 @@ Environment variables required:
 - BASE_URL
 
 ---
-
+https://yoga-booking-ion-cz.onrender.com
 ## Summary
 
 This application evolved from a simple starter project into a fully functional booking system.  
