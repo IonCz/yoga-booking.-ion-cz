@@ -163,7 +163,8 @@ Route protection ensures unauthorized access is blocked
 
 Environment variables required:
 - ACCESS_TOKEN_SECRET  
-- BCRYPT_SALT_ROUNDS  
+- BCRYPT_SALT_ROUNDS
+- BASE_URL
 
 ---
 
