@@ -119,7 +119,9 @@ Important:
 
 ### Important Warning (Role Management)
 
-- Only instructors/admins can change roles  
+- Only instructors/admins can change roles
+- Instructor/admin email : gg@gg
+- password : 123
 
 If you change your own role from instructor to student:
 - You will lose access to the Admin Dashboard  
